@@ -1,0 +1,41 @@
+services:
+  db:
+    image: mysql:8.0  # Versión específica de la imagen MySQL
+    restart: always   # El contenedor debe reiniciarse siempre que se detenga a menos que se detenga explícitamente
+    environment:
+      # Configuración inicial y la creación automática de la base de datos y usuarios dentro del contenedor de MySQL.
+      MYSQL_ROOT_PASSWORD: MySuP3RP3  # Contraseña del usuario root de MySQL
+      MYSQL_DATABASE: pizzeria         # Nombre de la base de datos inicial
+      MYSQL_USER: up1zz3r14                 # Nombre de usuario para acceder a la base de datos
+      MYSQL_PASSWORD: pp1zz3r14         # Contraseña del usuario para acceder a la base de datos
+    ports:
+      - "3306:3306"  # Mapeo del puerto del contenedor al host
+    volumes:
+      #<nombre_volumen>:<mapeo al directorio dentro del contenedor>
+      - mysql_data:/var/lib/mysql       # Persistencia de datos de MySQL
+
+volumes:
+  mysql_data:  # Definición de volumen para persistir los datos de MySQL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  pizzeriaDominos:
+#    image: pizzeriaDominos
+#    build:
+#      context: pizzeriaDominos
+#      dockerfile: Dockerfile
+#    ports:
+#      - 8080:80
+
