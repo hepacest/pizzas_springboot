@@ -14,6 +14,17 @@ services:
       #<nombre_volumen>:<mapeo al directorio dentro del contenedor>
       - mysql_data:/var/lib/mysql       # Persistencia de datos de MySQL
 
+#  api_pizzeria:
+#    image: api_pizzeria
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - db
+
+
 volumes:
   mysql_data:  # Definición de volumen para persistir los datos de MySQL
 

@@ -5,7 +5,7 @@ FROM openjdk:17-jdk
 WORKDIR /pizzeriaDominos
 
 # Copiar el archivo JAR de la aplicación del local al contenedor COPY <origen> <destino>
-COPY build/libs/pizzeriaDominos.jar pizzeriaDominos.jar
+COPY build/libs/pizzeriaDominos-1.0.jar pizzeriaDominos.jar
 
 # Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 8080
