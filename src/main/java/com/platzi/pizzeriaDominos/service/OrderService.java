@@ -5,6 +5,7 @@ import com.platzi.pizzeriaDominos.persistence.projection.OrderSummary;
 import com.platzi.pizzeriaDominos.persistence.repository.OrderRepository;
 import com.platzi.pizzeriaDominos.service.DTO.RandomOrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,6 @@ public class OrderService {
 
     private static final String DELIVERY = "D";
     private static final String CARRYOUT = "C";
-    private static final String ON_SITE = "S";
 
     @Autowired
     public OrderService(OrderRepository orderRepository) {
@@ -28,9 +28,7 @@ public class OrderService {
     }
 
     public List<OrderEntity> getAll (){
-        List<OrderEntity> orders = this.orderRepository.findAll();
-        orders.forEach(o -> System.out.println(o.getCustomer().getName()));
-        return orders;
+        return this.orderRepository.findAll();
     }
 
     public List<OrderEntity> getTodayOrders (){
@@ -43,7 +41,8 @@ public class OrderService {
         return this.orderRepository.findAllByMethodIn(methods);
     }
 
-    public List<OrderEntity> getCustomerOrders (Integer idCustomer){
+    @Secured("ROLE_ADMIN")
+    public List<OrderEntity> getCustomerOrders (String idCustomer){
         return  this.orderRepository.findCustomerOrder(idCustomer);
     }
 
